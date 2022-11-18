@@ -19,6 +19,14 @@ app.MapPost("/add-user", async (Owners owner, OwnersDb db) =>
     return Results.Created($"/ownerItems/{owner.Id}", owner);
 });
 
+app.MapPost("/add-vehicule", async (Vehicles vehicle, VehiclesDb db) =>
+{
+    db.Vehicle.Add(vehicle);
+    await db.SaveChangesAsync();
+
+    return Results.Created($"/vehicleItems/{vehicle.Id}", vehicle);
+});
+
 
 app.MapPost("/add-claim", async (Claims claim, ClaimsDb db) =>
 {
