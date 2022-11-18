@@ -20,6 +20,14 @@ app.MapPost("/add-user", async (Owners owner, OwnersDb db) =>
 });
 
 
+app.MapPost("/add-claim", async (Claims claim, ClaimsDb db) =>
+{
+    db.Claim.Add(claim);
+    await db.SaveChangesAsync();
+
+    return Results.Created($"/claimItems/{claim.Id}", claim);
+});
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
