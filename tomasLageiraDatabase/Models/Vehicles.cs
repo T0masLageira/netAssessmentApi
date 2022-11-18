@@ -9,7 +9,7 @@
         public int? Year { get; set; }
 
         public int? Owner_Id { get; set; }
-        public Owners owner { get; set; }
+        public Owners? owner { get; set; }
 
     }
 }

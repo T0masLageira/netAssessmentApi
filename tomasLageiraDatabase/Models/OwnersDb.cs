@@ -7,7 +7,7 @@ namespace tomasLageiraDatabase.Models
         public OwnersDb(DbContextOptions<OwnersDb> options)
             : base(options) { }
 
-        public DbSet<Owners> Owner => Set<Owners>();
+        public DbSet<Owners> Owners => Set<Owners>();
 
 
     }

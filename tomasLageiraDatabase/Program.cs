@@ -11,15 +11,15 @@ var app = builder.Build();
 //builder.Services.AddControllersWithViews();
 
 
-app.MapPost("/add-user", async (Owners owner, OwnersDb db) =>
+app.MapPost("/add-owner", async (Owners owner, OwnersDb db) =>
 {
-    db.Owner.Add(owner);
+    db.Owners.Add(owner);
     await db.SaveChangesAsync();
 
     return Results.Created($"/ownerItems/{owner.Id}", owner);
 });
 
-app.MapPost("/add-vehicule", async (Vehicles vehicle, VehiclesDb db) =>
+app.MapPost("/add-vehicle", async (Vehicles vehicle, VehiclesDb db) =>
 {
     db.Vehicle.Add(vehicle);
     await db.SaveChangesAsync();
@@ -36,6 +36,21 @@ app.MapPost("/add-claim", async (Claims claim, ClaimsDb db) =>
     return Results.Created($"/claimItems/{claim.Id}", claim);
 });
 
+app.MapGet("/get-owners", async (OwnersDb db) =>
+{
+    return await db.Owners.ToListAsync();
+});
+
+
+app.MapGet("/get-vehicles", async (VehiclesDb db) =>
+{
+    return await db.Vehicle.ToListAsync();
+});
+
+app.MapGet("/get-claims", async (ClaimsDb db) =>
+{
+    return await db.Claim.ToListAsync();
+});
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

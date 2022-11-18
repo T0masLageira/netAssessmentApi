@@ -8,6 +8,6 @@
         public string? LastName { get; set; }
         public string? DriverLicense { get; set; }
 
-        public List<Vehicles> Vehicles { get; set; }
+        public List<Vehicles>? Vehicles { get; set; }
     }
 }
